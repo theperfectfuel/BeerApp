@@ -1,0 +1,49 @@
+<div class="page_html">
+ <header class="hi"><span class="color_b">Brew Recipes</span></header>
+  <article class="list_wrap">
+    <div class="item_wrap" ng-repeat="data in datas | orderBy: '-$id'">
+      <div class="item_data">
+        <p>
+        <span class="beer_name">Name: {{data.beer_name}}</span>
+        <br />
+        <span class="beer_name">Style: {{data.beer_style}}</span>
+        <br />
+        <span class="beer_name">ABV: {{data.beer_abv}}</span>
+        <br />
+        <span class="beer_name">Brew Difficulty: {{data.brew_difficulty}}</span>
+        </p>
+        <p>
+        <span class="grain_type">Grain Type: {{data.grains_type}}</span>
+        <br />
+        <span class="grain_amount">Grain Amount: {{data.grains_amount}}</span>
+        </p>
+        <p>
+        <span class="hops_type">Hops Type: {{data.hops_type}}</span>
+        <br />
+        <span class="hops_amount">Hops Amount: {{data.hops_amount}}</span>
+        </p>
+        <p>
+        <span class="yeast_type">Yeast Type: {{data.yeast_type}}</span>
+        <br />
+        <span class="yeast_amount">Yeast Amount: {{data.yeast_amount}}</span>
+        </p>
+        <p>
+        <span class="yeast_type">Other: {{data.other}}</span>
+        <br />
+        </p>
+        <p>
+        <span class="grain_type">Original Gravity: {{data.orig_grav}}</span>
+        <br />
+        <span class="grain_amount">Final Gravity: {{data.final_grav}}</span>
+        <br />
+        <span class="hops_amount">Batch Size: {{data.batch_size}}</span>
+        </p>
+        <p>
+        <span class="yeast_amount">Brew Instructions: {{data.brew_instructions}}</span>
+        </p>
+        <a href="#/list-recipes/{{data.$id}}">View this recipe</a>
+        
+      </div><!-- - /item_data - -->
+    </div><!-- - /item_data - -->
+  </article><!-- - /list_wrap - -->
+</div><!-- - /page_html - -->

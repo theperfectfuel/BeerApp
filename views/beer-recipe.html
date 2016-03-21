@@ -1,0 +1,48 @@
+
+<div class="page_html">
+ <header class="hi"><span class="color_b">{{beer_recipe.beer_name}}</span></header>
+  <article class="list_wrap">
+    <div class="item_wrap">
+      <div class="item_data">
+        <p>
+        <span class="beer_name">Style: {{beer_recipe.beer_style}}</span>
+        <br />
+        <span class="beer_name">ABV: {{beer_recipe.beer_abv}}</span>
+        <br />
+        <span class="beer_name">Brew Difficulty: {{beer_recipe.brew_difficulty}}</span>
+        </p>
+        <p>
+        <span class="grain_type">Grain Type: {{beer_recipe.grains_type}}</span>
+        <br />
+        <span class="grain_amount">Grain Amount: {{beer_recipe.grains_amount}}</span>
+        </p>
+        <p>
+        <span class="hops_type">Hops Type: {{beer_recipe.hops_type}}</span>
+        <br />
+        <span class="hops_amount">Hops Amount: {{beer_recipe.hops_amount}}</span>
+        </p>
+        <p>
+        <span class="yeast_type">Yeast Type: {{beer_recipe.yeast_type}}</span>
+        <br />
+        <span class="yeast_amount">Yeast Amount: {{beer_recipe.yeast_amount}}</span>
+        </p>
+        <p>
+        <span class="yeast_type">Other: {{beer_recipe.other}}</span>
+        <br />
+        </p>
+        <p>
+        <span class="grain_type">Original Gravity: {{beer_recipe.orig_grav}}</span>
+        <br />
+        <span class="grain_amount">Final Gravity: {{beer_recipe.final_grav}}</span>
+        <br />
+        <span class="hops_amount">Batch Size: {{beer_recipe.batch_size}}</span>
+        </p>
+        <p>
+        <span class="yeast_amount">Brew Instructions: {{beer_recipe.brew_instructions}}</span>
+        </p>
+        <a href="#/shopping-list/{{beer_recipe.$id}}">Create New Shopping List</a>
+        
+      </div><!-- - /item_data - -->
+    </div><!-- - /item_data - -->
+  </article><!-- - /list_wrap - -->
+</div><!-- - /page_html - -->
