@@ -46,6 +46,14 @@ angular.module('beerApp', ['ngRoute', 'ngAnimate', 'firebase'])
 
 	.controller('newRecipeCtrl', ['$scope', function($scope) {
 		$scope.recipetitle = "Create a New Recipe";
+		$scope.grains_list = {};
+
+		$scope.pushGrains = function() {
+	      $scope.grains_list.push({grains_type:$scope.grains_type, grains_amount:$scope.grains_amount});
+	      $scope.grains_type = "";
+	      $scope.grains_amount = "";
+	      console.log($scope.grains_list);
+	    };
 
 		$scope.recipes = new Firebase("https://fiery-torch-5303.firebaseio.com/Recipes");
 
@@ -54,8 +62,9 @@ angular.module('beerApp', ['ngRoute', 'ngAnimate', 'firebase'])
 				beer_name: $scope.beer_name,
 				beer_style: $scope.beer_style,
 				beer_abv: $scope.beer_abv,
-				grains_type: $scope.grains_type,
-				grains_amount: $scope.grains_amount,
+				grains_list: $scope.grains_list,
+				//grains_type: $scope.grains_type,
+				//grains_amount: $scope.grains_amount,
 				hops_type: $scope.hops_type,
 				hops_amount: $scope.hops_amount,
 				yeast_type: $scope.yeast_type,
