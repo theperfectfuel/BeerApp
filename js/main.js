@@ -46,13 +46,35 @@ angular.module('beerApp', ['ngRoute', 'ngAnimate', 'firebase'])
 
 	.controller('newRecipeCtrl', ['$scope', function($scope) {
 		$scope.recipetitle = "Create a New Recipe";
-		$scope.grains_list = {};
+
+		$scope.grains_list = [];
+		$scope.grains_list_obj = {};
+
+		$scope.hops_list = [];
+		$scope.hops_list_obj = {};
+
+		$scope.yeast_list = [];
+		$scope.yeast_list_obj = {};
 
 		$scope.pushGrains = function() {
 	      $scope.grains_list.push({grains_type:$scope.grains_type, grains_amount:$scope.grains_amount});
 	      $scope.grains_type = "";
 	      $scope.grains_amount = "";
-	      console.log($scope.grains_list);
+	      $scope.grains_list_obj = angular.copy($scope.grains_list);
+	    };
+
+		$scope.pushHops = function() {
+	      $scope.hops_list.push({hops_type:$scope.hops_type, hops_amount:$scope.hops_amount});
+	      $scope.hops_type = "";
+	      $scope.hops_amount = "";
+	      $scope.hops_list_obj = angular.copy($scope.hops_list);
+	    };
+
+		$scope.pushYeast = function() {
+	      $scope.yeast_list.push({yeast_type:$scope.yeast_type, yeast_amount:$scope.yeast_amount});
+	      $scope.yeast_type = "";
+	      $scope.yeast_amount = "";
+	      $scope.yeast_list_obj = angular.copy($scope.yeast_list);
 	    };
 
 		$scope.recipes = new Firebase("https://fiery-torch-5303.firebaseio.com/Recipes");
@@ -62,13 +84,9 @@ angular.module('beerApp', ['ngRoute', 'ngAnimate', 'firebase'])
 				beer_name: $scope.beer_name,
 				beer_style: $scope.beer_style,
 				beer_abv: $scope.beer_abv,
-				grains_list: $scope.grains_list,
-				//grains_type: $scope.grains_type,
-				//grains_amount: $scope.grains_amount,
-				hops_type: $scope.hops_type,
-				hops_amount: $scope.hops_amount,
-				yeast_type: $scope.yeast_type,
-				yeast_amount: $scope.yeast_amount,
+				grains_list: $scope.grains_list_obj,
+				hops_list: $scope.hops_list_obj,
+				yeast_list: $scope.yeast_list_obj,
 				orig_grav: $scope.orig_grav,
 				final_grav: $scope.final_grav,
 				brew_difficulty: $scope.brew_difficulty,
@@ -121,6 +139,7 @@ angular.module('beerApp', ['ngRoute', 'ngAnimate', 'firebase'])
 
 		});
 
+		console.log($scope.beer_recipe);
 
 
 	}])

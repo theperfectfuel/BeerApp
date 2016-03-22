@@ -1,106 +1,130 @@
 <h1>{{recipetitle}}</h1>
 
 <div>
-  <article class="form_wrap">
-    <form ng-submit="addRecipe()">
+  <!-- <article class="form_wrap"> -->
+    <form class="form-horizontal" ng-submit="addRecipe()">
       <div id="beerForm">
-        <div>
-          <span class="label">Beer Name</span>
-          <span class="input"><input type="text" ng-model="beer_name" /></span>
+        <div class="form-group">
+          <span class="col-sm-3 control-label">Beer Name: </span>
+          <span class="col-sm-9"><input class="form-control" type="text" ng-model="beer_name" /></span>
         </div>
-        <div>
-          <span class="label">Beer Style</span>
-          <span class="input"><input type="text" ng-model="beer_style" /></span>
+        <div class="form-group">
+          <span class="col-sm-3 control-label">Beer Style: </span>
+          <span class="col-sm-9"><input class="form-control" type="text" ng-model="beer_style" /></span>
         </div>
-        <div>
-          <span class="label">Beer ABV</span>
-          <span class="input"><input type="text" ng-model="beer_abv" /></span>
+        <div class="form-group">
+          <span class="col-sm-3 control-label">Beer ABV: </span>
+          <span class="col-sm-9"><input class="form-control" type="text" ng-model="beer_abv" /></span>
         </div>
 
-
-        <div style="padding-top: 10px; border-top: 1px solid black;">
+        <div style="padding-top: 10px; border-top: 1px solid #ccc;">
           <h4>Grains</h4>
           <div ng-repeat="grains in grains_list">
-            <span>{{grains.grains_type}} </span> <span> {{grains.grains_amount}}</span>
+            <span>{{grains.grains_type}}: </span> <span> {{grains.grains_amount}}</span>
           </div>
-          <span class="label">Grain Type</span>
-          <span class="grains-type-input"><input type="text" ng-model="grains_type" /></span>
-          <br />
-          <span class="label">Grain Amount</span>
-          <span class="grains-amount-input"><input type="text" ng-model="grains_amount"/></span>
+          <div class="form-group">
+            <span class="col-sm-3 control-label">Grain Type: </span>
+            <span class="col-sm-9"><input class="form-control" type="text" ng-model="grains_type" /></span>
+          </div>
+          <div class="form-group">
+            <span class="col-sm-3 control-label">Grain Amount: </span>
+            <span class="col-sm-9"><input class="form-control" type="text" ng-model="grains_amount"/></span>
+          </div>
         </div>
-        <div style="padding-bottom: 10px; border-bottom: 1px solid black;">
-          <p><div class="btn" ng-click="pushGrains()">Add More</div></p>
+        <div style="padding-bottom: 10px;">
+          <div class="btn btn-large btn-primary" ng-click="pushGrains()">Add These Grains</div>
         </div>
 
+        <div style="padding-top: 10px; border-top: 1px solid #ccc;">
+          <h4>Hops</h4>
+          <div ng-repeat="hops in hops_list">
+            <span>{{hops.hops_type}}: </span> <span> {{hops.hops_amount}}</span>
+          </div>
+          <div class="form-group">
+            <span class="col-sm-3 control-label">Hops Type: </span>
+            <span class="col-sm-9"><input class="form-control" type="text" ng-model="hops_type" /></span>
+          </div>
+          <div class="form-group">
+            <span class="col-sm-3 control-label">Hops Amount: </span>
+            <span class="col-sm-9"><input class="form-control" type="text" ng-model="hops_amount"/></span>
+          </div>
+        </div>
+        <div style="padding-bottom: 10px;">
+          <p><div class="btn btn-large btn-primary" ng-click="pushHops()">Add These Hops</div></p>
+        </div>
 
+        <div style="padding-top: 10px; border-top: 1px solid #ccc;">
+          <h4>Yeast</h4>
+          <div ng-repeat="yeast in yeast_list">
+            <span>{{yeast.yeast_type}}: </span> <span> {{yeast.yeast_amount}}</span>
+          </div>
+          <div class="form-group">
+            <span class="col-sm-3 control-label">Yeast Type: </span>
+            <span class="col-sm-9"><input class="form-control" type="text" ng-model="yeast_type" /></span>
+          </div>
+          <div class="form-group">
+            <span class="col-sm-3 control-label">Yeast Amount: </span>
+            <span class="col-sm-9"><input class="form-control" type="text" ng-model="yeast_amount"/></span>
+          </div>
+        </div>
+        <div style="padding-bottom: 10px; border-bottom: 1px solid #ccc;">
+          <p><div class="btn btn-large btn-primary" ng-click="pushYeast()">Add This Yeast</div></p>
+        </div>
 
-        <div>
-          <p class="label">Hops Type</p>
-          <p class="input"><input type="text" ng-model="hops_type" /></p>
+        <div class="form-group" style="padding-top: 10px;">
+          <span class="col-sm-3 control-label">Original Gravity: </span>
+          <span class="col-sm-9"><input class="form-control" type="text" ng-model="orig_grav" /></span>
         </div>
-        <div>
-          <p class="label">Hops Amount</p>
-          <p class="input"><input type="text" ng-model="hops_amount" /></p>
+
+        <div class="form-group">
+          <span class="col-sm-3 control-label">Final Gravity: </span>
+          <span class="col-sm-9"><input class="form-control" type="text" ng-model="final_grav" /></span>
         </div>
-        <div>
-          <p class="label">Yeast Type</p>
-          <p class="input"><input type="text" ng-model="yeast_type" /></p>
-        </div>
-        <div>
-          <p class="label">Yeast Amount</p>
-          <p class="input"><input type="text" ng-model="yeast_amount" /></p>
-        </div>
-        <div>
-          <p class="label">Original Gravity</p>
-          <p class="input"><input type="text" ng-model="orig_grav" /></p>
-        </div>
-        <div>
-          <p class="label">Final Gravity</p>
-          <p class="input"><input type="text" ng-model="final_grav" /></p>
-        </div>
-        <div>
-          <p class="label">Brew Difficulty</p>
-          <p class="input">
-            <select name="brew_difficulty" ng-model="brew_difficulty">
+
+        <div class="form-group">
+          <span class="col-sm-3 control-label">Brew Difficulty: </span>
+          <span class="col-sm-9">
+            <select class="form-control" name="brew_difficulty" ng-model="brew_difficulty">
               <option value="Easy">Easy</option>
               <option value="Medium">Medium</option>
               <option value="Advanced">Advanced</option>
             </select>
-          </p>
+          </span>
         </div>
-        <div>
-          <p class="label">Batch Size</p>
-          <p class="input">
-            <select name="batch_size" ng-model="batch_size">
+
+        <div class="form-group">
+          <span class="col-sm-3 control-label">Batch Size: </span>
+          <span class="col-sm-9">
+            <select class="form-control" name="batch_size" ng-model="batch_size">
               <option value="1">1 gal</option>
               <option value="3">3 gal</option>
               <option value="5">5 gal</option>
             </select>
-          </p>
+          </span>
         </div>
-        <div>
-          <p class="label">Other</p>
-          <p class="input"><input type="text" ng-model="other" /></p>
+
+        <div class="form-group">
+          <span class="col-sm-3 control-label">Other Ingredients: </span>
+          <span class="col-sm-9"><input class="form-control" type="text" ng-model="other" /></span>
         </div>
-        <div>
-          <p class="label">Brew Instructions</p>
-          <p class="input"><input type="text" ng-model="brew_instructions"></p>
+
+        <div class="form-group">
+          <span class="col-sm-3 control-label">Instructions: </span>
+          <span class="col-sm-9"><input class="form-control" type="text" ng-model="brew_instructions"></span>
         </div>
+
         <div>
           <p></p>
-          <p style="text-align:right">
             <input type="submit" value="Create Recipe" class="btn btn-large btn-primary" /></input>
-          </p>
         </div>
       </div><!-- close beerForm -->
       
-      <input type="text" name="grains_list" ng-model="grains_list" />
+      <input type="hidden" name="grains_list" ng-model="grains_list" />
       <input type="hidden" name="hop_list" ng-model="hop_list" />
       <input type="hidden" name="yeast_list" ng-model="yeast_list" />
       <input type="hidden" name="other_list" ng-model="other_list" />
 
 
     </form>
-  </article><!-- - /form_wrap - -->
+  <!-- </article> - /form_wrap - -->
 </div><!-- - /page_html - -->
