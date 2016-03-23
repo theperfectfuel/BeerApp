@@ -1,22 +1,38 @@
+
 <div class="page_html">
- <header class="hi"><span class="color_b">Shop for: {{beer_recipe.beer_name}}</span></header>
+ <header class="hi"><span class="color_b">{{beer_recipe.beer_name}}</span></header>
   <article class="list_wrap">
     <div class="item_wrap">
       <div class="item_data">
-      	<table>
-			<tr>
-				<td>Grains: {{beer_recipe.grains_type}} {{beer_recipe.grains_amount}}</td>
-			</tr>
-			<tr>
-				<td>Hops: {{beer_recipe.hops_type}} {{beer_recipe.hops_amount}}</td>
-			</tr>
-			<tr>
-				<td>Yeast: {{beer_recipe.yeast_type}} {{beer_recipe.yeast_amount}}</td>
-			</tr>
-			<tr>
-				<td>Size: {{beer_recipe.batch_size}} gals</td>
-			</tr>
-		</table>
+
+        <p ng-repeat="grains in beer_recipe.grains_list">
+	        <span class="grain_type">Grain Type: {{grains.grains_type}}</span>
+	        <br />
+	        <span class="grain_amount">Grain Amount: {{grains.grains_amount}}</span>
+        </p>
+
+        <p ng-repeat="hops in beer_recipe.hops_list">
+	        <span class="hops_type">Hops Type: {{hops.hops_type}}</span>
+	        <br />
+	        <span class="hops_amount">Hops Amount: {{hops.hops_amount}}</span>
+        </p>
+
+        <p ng-repeat="yeast in beer_recipe.yeast_list">
+	        <span class="yeast_type">Yeast Type: {{yeast.yeast_type}}</span>
+	        <br />
+	        <span class="yeast_amount">Yeast Amount: {{yeast.yeast_amount}}</span>
+        </p>
+
+        <p ng-repeat="other in beer_recipe.other_list">
+	        <span class="other_ingredient">Other Ingredient: {{other.other_ingredient}}</span>
+	        <br />
+	        <span class="other_amount">Other Amount: {{other.other_amount}}</span>
+        </p>
+
+        <p>
+        	<span class="hops_amount">Batch Size: {{beer_recipe.batch_size}}</span>
+        </p>
+        
       </div><!-- - /item_data - -->
     </div><!-- - /item_data - -->
   </article><!-- - /list_wrap - -->

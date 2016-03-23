@@ -4,7 +4,11 @@
    Author's custom styles
    ========================================================================== */
 
-body { font-family: 'Arvo', sans-serif; color: #839496; }
+body { font-family: 'Arvo', sans-serif; color: #839496;}
+
+p {
+  font-size: 1.3em;
+}
 
 .list_wrap { margin-left: 25px; margin-top: 45px; }
 .item_wrap { width: 400px; border-bottom: 1px solid #eee; padding: 15px; padding-bottom: 10px; margin-top: 45px; }
@@ -97,14 +101,26 @@ label {
   font-size: 1em;
 }
 
+.btn-input {
+  height: 2.3em;
+}
+
 input.button:hover {
   background: #fff;
   color: #09C;
 }
 
+.jumbotron {
+  background-image: url('../img/beer-with-grains-hops.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-shadow: 0 2px 4px rgba(30, 40, 53, 0.75);
+}
 
-
-
+.top-padding {
+  padding-top: 2em;
+}
 
 
 

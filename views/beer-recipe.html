@@ -26,10 +26,13 @@
         <br />
         <span class="yeast_amount">Yeast Amount: {{yeast.yeast_amount}}</span>
         </p>
-        <p>
-        <span class="yeast_type">Other: {{beer_recipe.other}}</span>
+
+        <p ng-repeat="other in beer_recipe.other_list">
+        <span class="other_ingredient">Other Ingredient: {{other.other_ingredient}}</span>
         <br />
+        <span class="other_amount">Other Amount: {{other.other_amount}}</span>
         </p>
+
         <p>
         <span class="grain_type">Original Gravity: {{beer_recipe.orig_grav}}</span>
         <br />

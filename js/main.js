@@ -22,7 +22,7 @@ angular.module('beerApp', ['ngRoute', 'ngAnimate', 'firebase'])
 		})
 		.when('/shopping-lists', {
 			templateUrl: './views/shopping-lists.html',
-			controller: 'shoppingListsCtrl'
+			controller: 'listShoppingListsCtrl'
 		})
 		.otherwise('/home');
 	}])
@@ -56,6 +56,9 @@ angular.module('beerApp', ['ngRoute', 'ngAnimate', 'firebase'])
 		$scope.yeast_list = [];
 		$scope.yeast_list_obj = {};
 
+		$scope.other_list = [];
+		$scope.other_list_obj = {};
+
 		$scope.pushGrains = function() {
 	      $scope.grains_list.push({grains_type:$scope.grains_type, grains_amount:$scope.grains_amount});
 	      $scope.grains_type = "";
@@ -77,6 +80,13 @@ angular.module('beerApp', ['ngRoute', 'ngAnimate', 'firebase'])
 	      $scope.yeast_list_obj = angular.copy($scope.yeast_list);
 	    };
 
+		$scope.pushOther = function() {
+	      $scope.other_list.push({other_ingredient:$scope.other_ingredient, other_amount:$scope.other_amount});
+	      $scope.other_ingredient = "";
+	      $scope.other_amount = "";
+	      $scope.other_list_obj = angular.copy($scope.other_list);
+	    };
+
 		$scope.recipes = new Firebase("https://fiery-torch-5303.firebaseio.com/Recipes");
 
 		$scope.addRecipe = function() {
@@ -87,11 +97,11 @@ angular.module('beerApp', ['ngRoute', 'ngAnimate', 'firebase'])
 				grains_list: $scope.grains_list_obj,
 				hops_list: $scope.hops_list_obj,
 				yeast_list: $scope.yeast_list_obj,
+				other_list: $scope.other_list_obj,
 				orig_grav: $scope.orig_grav,
 				final_grav: $scope.final_grav,
 				brew_difficulty: $scope.brew_difficulty,
 				batch_size: $scope.batch_size,
-				other: $scope.other,
 				brew_instructions: $scope.brew_instructions
 
 			});
@@ -108,7 +118,8 @@ angular.module('beerApp', ['ngRoute', 'ngAnimate', 'firebase'])
 			$scope.final_grav = "";
 			$scope.brew_difficulty = "";
 			$scope.batch_size = "";
-			$scope.other = "";
+			$scope.other_ingredient = "";
+			$scope.other_amount = "";
 			$scope.brew_instructions = "";
 		};
 
@@ -118,14 +129,8 @@ angular.module('beerApp', ['ngRoute', 'ngAnimate', 'firebase'])
 	.controller('listRecipesCtrl', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
 
 		var recList = new Firebase("https://fiery-torch-5303.firebaseio.com/Recipes");
-
 		$scope.datas = $firebaseArray(recList);
-
-		$scope.datas.$loaded().then(function(array) {
-		    console.log('Initial items received from Firebase', array.length);
-		    console.log($scope.datas);
-		});
-
+		//$scope.datas.$loaded().then(function(array) {});
 	}])
 
 	.controller('showBeerCtrl', ['$scope', '$routeParams', '$route', '$firebaseObject', 'recipeRequest', function($scope, $routeParams, $route, $firebaseObject, recipeRequest) {
@@ -139,8 +144,6 @@ angular.module('beerApp', ['ngRoute', 'ngAnimate', 'firebase'])
 
 		});
 
-		console.log($scope.beer_recipe);
-
 
 	}])
 
@@ -148,27 +151,25 @@ angular.module('beerApp', ['ngRoute', 'ngAnimate', 'firebase'])
 
 		$scope.recipeID = $routeParams.recipeID;
 
+
+
 		var beerRecipe = new Firebase("https://fiery-torch-5303.firebaseio.com/Recipes/" + $scope.recipeID);
 		$scope.beer_recipe = $firebaseObject(beerRecipe);
+
 
 		$scope.newShoppingList = function() {
 			$scope.shoppingList = new Firebase("https://fiery-torch-5303.firebaseio.com/ShoppingLists");
 
-			$scope.beer_recipe.$loaded().then(function(array) {
+			$scope.beer_recipe.$loaded().then(function() {
 
 				$scope.shoppingList.push({
 				beer_name: $scope.beer_recipe.beer_name,
-				grains_type: $scope.beer_recipe.grains_type,
-				grains_amount: $scope.beer_recipe.grains_amount,
-				hops_type: $scope.beer_recipe.hops_type,
-				hops_amount: $scope.beer_recipe.hops_amount,
-				yeast_type: $scope.beer_recipe.yeast_type,
-				yeast_amount: $scope.beer_recipe.yeast_amount,
-				batch_size: $scope.beer_recipe.batch_size,
-				other: $scope.beer_recipe.other
+				grains_list: $scope.beer_recipe.grains_list,
+				hops_list: $scope.beer_recipe.hops_list,
+				yeast_list: $scope.beer_recipe.yeast_list,
+				other_list: $scope.beer_recipe.other_list,
+				batch_size: $scope.beer_recipe.batch_size
 				});
-
-			    //console.log($scope.beer_recipe.beer_name);
 
 			});
 
@@ -178,8 +179,11 @@ angular.module('beerApp', ['ngRoute', 'ngAnimate', 'firebase'])
 
 	}])
 
-	.controller('shoppingListsCtrl', ['$scope', '$route', '$routeParams', '$firebaseObject', function($scope, $route, $routeParams, $firebaseObject) {
-		
+	.controller('listShoppingListsCtrl', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
+
+		var shopLists = new Firebase("https://fiery-torch-5303.firebaseio.com/ShoppingLists");
+		$scope.datas = $firebaseArray(shopLists);
+		//$scope.datas.$loaded().then(function(array) {});
 	}]);
 
 

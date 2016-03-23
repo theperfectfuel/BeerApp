@@ -71,6 +71,26 @@
           <p><div class="btn btn-large btn-primary" ng-click="pushYeast()">Add This Yeast</div></p>
         </div>
 
+
+        <div style="padding-top: 10px; border-top: 1px solid #ccc;">
+          <h4>Other Ingredients</h4>
+          <div ng-repeat="other in other_list">
+            <span>{{other.other_ingredient}}: </span> <span> {{other.other_amount}}</span>
+          </div>
+          <div class="form-group">
+            <span class="col-sm-3 control-label">Other Ingredient: </span>
+            <span class="col-sm-9"><input class="form-control" type="text" ng-model="other_ingredient" /></span>
+          </div>
+          <div class="form-group">
+            <span class="col-sm-3 control-label">Other Amount: </span>
+            <span class="col-sm-9"><input class="form-control" type="text" ng-model="other_amount"/></span>
+          </div>
+        </div>
+        <div style="padding-bottom: 10px; border-bottom: 1px solid #ccc;">
+          <p><div class="btn btn-large btn-primary" ng-click="pushOther()">Add This Ingredient</div></p>
+        </div>
+
+
         <div class="form-group" style="padding-top: 10px;">
           <span class="col-sm-3 control-label">Original Gravity: </span>
           <span class="col-sm-9"><input class="form-control" type="text" ng-model="orig_grav" /></span>
@@ -104,18 +124,13 @@
         </div>
 
         <div class="form-group">
-          <span class="col-sm-3 control-label">Other Ingredients: </span>
-          <span class="col-sm-9"><input class="form-control" type="text" ng-model="other" /></span>
-        </div>
-
-        <div class="form-group">
           <span class="col-sm-3 control-label">Instructions: </span>
           <span class="col-sm-9"><input class="form-control" type="text" ng-model="brew_instructions"></span>
         </div>
 
         <div>
           <p></p>
-            <input type="submit" value="Create Recipe" class="btn btn-large btn-primary" /></input>
+            <input type="submit" value="Create Recipe" class="btn btn-large btn-primary btn-input" /></input>
         </div>
       </div><!-- close beerForm -->
       
